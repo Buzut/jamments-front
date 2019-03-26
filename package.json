@@ -1,0 +1,37 @@
+{
+  "name": "Jamments-front",
+  "version": "1.0.0",
+  "description": "Jamments frontend API library",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "prepare": "test -d .git && cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0",
+    "buildDocs": "jsdoc -t node_modules/minami src -R README.md -d docs",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xxxx.git"
+  },
+  "keywords": [],
+  "author": "Buzut (https://buzut.net)",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/Buzut/newname/issues"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-security": "^1.4.0",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3",
+    "rollup": "^0.62.0"
+  },
+  "dependencies": {}
+}

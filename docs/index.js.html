@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>index.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Jamments.html">Jamments</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#.escapeHtml">escapeHtml</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#.parseMd">parseMd</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#deleteComment">deleteComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getCommentById">getCommentById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getComments">getComments</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getSiteInfos">getSiteInfos</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#postComment">postComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#updateComment">updateComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#updateNewCommentsSubscription">updateNewCommentsSubscription</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#validateComment">validateComment</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#ajax">ajax</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getJsonData">getJsonData</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Fetch json data from given url
+ * @param { String } url
+ * @return { Promise }
+ */
+function getJsonData(url) {
+    return fetch(url)
+    .then((res) => {
+        if (!res.ok) return Promise.reject(new Error(res.status));
+        return res.json();
+    });
+}
+
+/**
+ * Send custom request using fetch api
+ * @param { String } url
+ * @param { String } method
+ * @param { Object } body
+ * @return { Promise }
+ */
+function ajax(url, method, body) {
+    const formData = new FormData();
+    Object.keys(body).forEach(key => formData.append(key, body[key]));
+
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData)
+        })
+        .then((res) => {
+            if (!res.ok) return res.text().then(msg => reject(msg));
+            return resolve();
+        })
+        .catch(reject);
+    });
+}
+
+class Jamments {
+    /**
+     * Create the API object
+     * @param { String } apiBaseAddr The API's full address (ex. https://comments.my-blog.net)
+     */
+    constructor(apiBaseAddr) {
+        this.apiBaseAddr = apiBaseAddr;
+        this.commentsHash = {};
+    }
+
+    /**
+     * Escape html to avoid xss
+     * @param { String } text
+     * @return { String }
+     */
+    static escapeHtml(text) {
+        const map = {
+            '&amp;': '&amp;amp;',
+            '&lt;': '&amp;lt;',
+            '>': '&amp;gt;',
+            '"': '&amp;quot;',
+            "'": '&amp;#039;'
+        };
+
+        return text.replace(/[&amp;&lt;>"']/g, m => map[m]);
+    }
+
+    /**
+     * Create HTML from Markdown (just a subset: links, *italicized*, **bold**, `code`, ```codeblock``` and paragraph)
+     * @param { String } text
+     * @return { String }
+     */
+    static parseMd(text) {
+        const codeblock = /```([^]+?.*?[^]+?[^]+?)```/g;
+        const code = /`(.*?)`/g;
+        const link = /\[(.*?)\]\((.*?)\)/g;
+        const ital = /\*(.*?)\*/g;
+        const bold = /\*\*(.*?)\*\*/g;
+        const paragraph = /(.+((\r?\n.+)*))/g;
+
+        return text.replace(codeblock, '&lt;pre>&lt;code class="hljs">$1&lt;/code>&lt;/pre>')
+        .replace(code, '&lt;code>$1&lt;/code>')
+        .replace(link, '&lt;a href="$2">$1&lt;/a>')
+        .replace(ital, '&lt;i>$1&lt;/i>')
+        .replace(bold, '&lt;strong>$1&lt;/strong>')
+        .replace(paragraph, '&lt;p>$1&lt;/p>');
+    }
+
+    /**
+     * Get global site info (nbr of comments for each article &amp; md5 of admin user)
+     * @return { Promise }
+     */
+    getSiteInfos() {
+        return getJsonData(`${this.apiBaseAddr}/infos/site.json`);
+    }
+
+    /**
+     * Return all comments sorted chronogically. Children comments are contained inside their parents (chrono sorted too)
+     * @param { String } slug
+     * @return { Promise }
+     * @return { Promise.resolve&lt;Array> } array of comments sorted chronologically
+     * @return { Promise.reject&lt;Error> }
+     */
+    getComments(slug) {
+        return getJsonData(`${this.apiBaseAddr}/article/${slug.replace(/^\/|\/$/g, '')}.json`)
+        .then((comments) => {
+            comments.sort((a, b) => {
+                if (new Date(a.submitted_at) &lt; new Date(b.submitted_at)) return -1;
+                return 1;
+            });
+
+            // create hash object
+            comments.forEach((comment) => {
+                this.commentsHash[comment.id] = Object.assign(comment, { children: [] });
+            });
+
+            // move children into their parents object
+            comments.forEach((comment) => {
+                if (!comment.parent_id) return;
+                this.commentsHash[comment.parent_id].children.push(comment);
+            });
+
+            // filter out children, each comment now contains all its children (object are passed by ref 😉)
+            return comments.reduce((acc, curr) => {
+                if (!curr.parent_id) acc.push(curr);
+                return acc;
+            }, []);
+        });
+    }
+
+    /**
+     * Get a comment from cached comments
+     * @param { String } id
+     * @return { Object }
+     */
+    getCommentById(id) {
+        return this.commentsHash[id];
+    }
+
+    /**
+     * Post a new comment
+     * @param { String } slug
+     * @param { String } comment
+     * @param { String } name
+     * @param { String } email
+     * @param { String } parentId
+     * @return { Promise }
+     */
+    postComment(slug, comment, name, email, parentId) {
+        return ajax(`${this.apiBaseAddr}/comment/`, 'POST', { slug, comment, name, email, parent_id: parentId }); // eslint-disable-line
+    }
+
+    /**
+     * Update a comment
+     * @param { String } commentId
+     * @param { String } comment
+     * @param { String } secret
+     * @return { Promise }
+     */
+    updateComment(commentId, secret, comment) {
+        return ajax(`${this.apiBaseAddr}/comment/${commentId}`, 'PATCH', { comment, user_secret: secret });
+    }
+
+    /**
+     * Delete a comment
+     * @param { String } commentId
+     * @param { String } secret
+     * @return { Promise }
+     */
+    deleteComment(commentId, secret) {
+        return ajax(`${this.apiBaseAddr}/comment/${commentId}`, 'DELETE', { user_secret: secret });
+    }
+
+    /**
+     * Validate comment by sending validation data to API and refresh commentlist after that
+     * @param { String } commentId
+     * @param { String } secret
+     * @return { Promise }
+     */
+    validateComment(commentId, secret) {
+        return ajax(`${this.apiBaseAddr}/comment/validate/${commentId}/`, 'POST', { user_secret: secret });
+    }
+
+    /**
+     * Update user notification preferences for an article
+     * @param { String } articleId
+     * @param { String } userId
+     * @param { String } secret
+     * @param { Bool } subscribe
+     * @return { Promise }
+     */
+    updateNewCommentsSubscription(articleId, userId, secret, subscribe) {
+        return ajax(`${this.apiBaseAddr}/notification/article/${articleId}/`, 'PATCH', { subscribe, user_id: userId, user_secret: secret });
+    }
+}
+
+export default Jamments;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 26 2019 18:45:36 GMT-0500 (heure normale de l’Est nord-américain) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
