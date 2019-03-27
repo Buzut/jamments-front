@@ -1,5 +1,5 @@
 {
-  "name": "Jamments-front",
+  "name": "jamments-front",
   "version": "1.0.0",
   "description": "Jamments frontend API library",
   "main": "lib/index.js",
