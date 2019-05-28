@@ -7,7 +7,19 @@ This is the frontend API library for [Jamments' API](https://buzut.github.io/jam
 
 Also note that this library uses the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and that it [might not be available](https://caniuse.com/#feat=fetch) in older browsers. If you're willing to support older browsers, you can easily [polyfill](https://github.com/github/fetch) it.
 
-## Exemple
+## Install with npm or yarn
+
+```
+npm install --save jamments-front
+```
+
+And then just import it as any ES module.
+
+```
+import Jamments from 'jamments-front';
+```
+
+## Usage
 Here's how you post a new comment
 ```javascript
 jamments.postComment(slug, comment, name, email, parentId)
