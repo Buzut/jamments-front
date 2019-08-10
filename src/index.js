@@ -36,6 +36,15 @@ function ajax(url, method, body) {
     });
 }
 
+/**
+ * Format slug to fetch comments json file
+ * @param { String } slug
+ * @return { String }
+ */
+function cleanSlug(slug) {
+    return slug.toLowerCase().replace(/^\/|\/$/g, '').replace(/\//g, '_').trim();
+}
+
 class Jamments {
     /**
      * Create the API object
@@ -100,7 +109,7 @@ class Jamments {
      * @return { Promise.reject<Error> }
      */
     getComments(slug) {
-        return getJsonData(`${this.apiBaseAddr}/article/${slug.replace(/^\/|\/$/g, '')}.json`)
+        return getJsonData(`${this.apiBaseAddr}/article/${cleanSlug(slug)}.json`)
         .then((comments) => {
             comments.sort((a, b) => {
                 if (new Date(a.submitted_at) < new Date(b.submitted_at)) return -1;
