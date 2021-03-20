@@ -1,6 +1,6 @@
 {
   "name": "jamments-front",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Jamments frontend API library",
   "main": "lib/index.js",
   "module": "src/index.js",
