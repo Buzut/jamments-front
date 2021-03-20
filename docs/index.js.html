@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>index.js - Documentation</title>
-
+    
+    
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -23,8 +25,11 @@
 
 <label for="nav-trigger" class="overlay"></label>
 
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Jamments.html">Jamments</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#.escapeHtml">escapeHtml</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#.parseMd">parseMd</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#deleteComment">deleteComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getCommentById">getCommentById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getComments">getComments</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getSiteInfos">getSiteInfos</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#postComment">postComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#updateComment">updateComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#updateNewCommentsSubscription">updateNewCommentsSubscription</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#validateComment">validateComment</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#ajax">ajax</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getJsonData">getJsonData</a></span></li>
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/Buzut/jamments-front" target="_blank" class="menu-item" id="repository" >Github repo</a></h2><h3>Classes</h3><ul><li><a href="Jamments.html">Jamments</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Jamments.html#.escapeHtml">escapeHtml</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#.parseMd">parseMd</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#deleteComment">deleteComment</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#getCommentById">getCommentById</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#getComments">getComments</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#getSiteInfos">getSiteInfos</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#postComment">postComment</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#updateComment">updateComment</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#updateNewCommentsSubscription">updateNewCommentsSubscription</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#validateComment">validateComment</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ajax">ajax</a></li><li><a href="global.html#cleanSlug">cleanSlug</a></li><li><a href="global.html#getJsonData">getJsonData</a></li></ul>
 </nav>
 
 <div id="main">
@@ -77,13 +82,27 @@ function ajax(url, method, body) {
     });
 }
 
+/**
+ * Format slug to fetch comments json file
+ * @param { String } slug
+ * @return { String }
+ */
+function cleanSlug(slug) {
+    return slug.toLowerCase().replace(/^\/|\/$/g, '').replace(/\//g, '_').trim();
+}
+
 class Jamments {
     /**
      * Create the API object
-     * @param { String } apiBaseAddr The API's full address (ex. https://comments.my-blog.net)
+     * @param { Object } options The options object
+     * @param { String } options.endpoint The API's full address (ex. https://comments.my-blog.net)
+     * @param { String } options.cachedFilesURI URI path to get to static files (without slashes, ex. static)
      */
-    constructor(apiBaseAddr) {
-        this.apiBaseAddr = apiBaseAddr;
+    constructor(config) {
+        if (!config || !config.endpoint || !config.cachedFilesURI) throw new TypeError('Both endpoint and cachedFilesURI must be defined');
+
+        this.endpoint = config.endpoint;
+        this.cachedFilesURI = config.cachedFilesURI;
         this.commentsHash = {};
     }
 
@@ -130,7 +149,7 @@ class Jamments {
      * @return { Promise }
      */
     getSiteInfos() {
-        return getJsonData(`${this.apiBaseAddr}/infos/site.json`);
+        return getJsonData(`${this.endpoint}/${this.cachedFilesURI}/site.json`);
     }
 
     /**
@@ -141,7 +160,7 @@ class Jamments {
      * @return { Promise.reject&lt;Error> }
      */
     getComments(slug) {
-        return getJsonData(`${this.apiBaseAddr}/article/${slug.replace(/^\/|\/$/g, '')}.json`)
+        return getJsonData(`${this.endpoint}/${this.cachedFilesURI}/${cleanSlug(slug)}.json`)
         .then((comments) => {
             comments.sort((a, b) => {
                 if (new Date(a.submitted_at) &lt; new Date(b.submitted_at)) return -1;
@@ -186,7 +205,7 @@ class Jamments {
      * @return { Promise }
      */
     postComment(slug, comment, name, email, parentId) {
-        return ajax(`${this.apiBaseAddr}/comment/`, 'POST', { slug, comment, name, email, parent_id: parentId }); // eslint-disable-line
+        return ajax(`${this.endpoint}/comment/`, 'POST', { slug, comment, name, email, parent_id: parentId }); // eslint-disable-line
     }
 
     /**
@@ -197,7 +216,7 @@ class Jamments {
      * @return { Promise }
      */
     updateComment(commentId, secret, comment) {
-        return ajax(`${this.apiBaseAddr}/comment/${commentId}`, 'PATCH', { comment, user_secret: secret });
+        return ajax(`${this.endpoint}/comment/${commentId}`, 'PATCH', { comment, user_secret: secret });
     }
 
     /**
@@ -207,7 +226,7 @@ class Jamments {
      * @return { Promise }
      */
     deleteComment(commentId, secret) {
-        return ajax(`${this.apiBaseAddr}/comment/${commentId}`, 'DELETE', { user_secret: secret });
+        return ajax(`${this.endpoint}/comment/${commentId}`, 'DELETE', { user_secret: secret });
     }
 
     /**
@@ -217,7 +236,7 @@ class Jamments {
      * @return { Promise }
      */
     validateComment(commentId, secret) {
-        return ajax(`${this.apiBaseAddr}/comment/validate/${commentId}/`, 'POST', { user_secret: secret });
+        return ajax(`${this.endpoint}/comment/validate/${commentId}/`, 'POST', { user_secret: secret });
     }
 
     /**
@@ -229,7 +248,7 @@ class Jamments {
      * @return { Promise }
      */
     updateNewCommentsSubscription(articleId, userId, secret, subscribe) {
-        return ajax(`${this.apiBaseAddr}/notification/article/${articleId}/`, 'PATCH', { subscribe, user_id: userId, user_secret: secret });
+        return ajax(`${this.endpoint}/notification/article/${articleId}/`, 'PATCH', { subscribe, user_id: userId, user_secret: secret });
     }
 }
 
@@ -241,15 +260,25 @@ export default Jamments;
 
 
 
+    
+    
 </div>
 
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 26 2019 18:57:06 GMT-0500 (heure normale de l’Est nord-américain) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sat Mar 20 2021 19:55:16 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
 <script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
 </body>
 </html>

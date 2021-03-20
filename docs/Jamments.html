@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Jamments - Documentation</title>
-
+    
+    
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -23,8 +25,11 @@
 
 <label for="nav-trigger" class="overlay"></label>
 
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Jamments.html">Jamments</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#.escapeHtml">escapeHtml</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#.parseMd">parseMd</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#deleteComment">deleteComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getCommentById">getCommentById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getComments">getComments</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#getSiteInfos">getSiteInfos</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#postComment">postComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#updateComment">updateComment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#updateNewCommentsSubscription">updateNewCommentsSubscription</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Jamments.html#validateComment">validateComment</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#ajax">ajax</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getJsonData">getJsonData</a></span></li>
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/Buzut/jamments-front" target="_blank" class="menu-item" id="repository" >Github repo</a></h2><h3>Classes</h3><ul><li><a href="Jamments.html">Jamments</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Jamments.html#.escapeHtml">escapeHtml</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#.parseMd">parseMd</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#deleteComment">deleteComment</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#getCommentById">getCommentById</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#getComments">getComments</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#getSiteInfos">getSiteInfos</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#postComment">postComment</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#updateComment">updateComment</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#updateNewCommentsSubscription">updateNewCommentsSubscription</a></li><li data-type='method' style='display: none;'><a href="Jamments.html#validateComment">validateComment</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ajax">ajax</a></li><li><a href="global.html#cleanSlug">cleanSlug</a></li><li><a href="global.html#getJsonData">getJsonData</a></li></ul>
 </nav>
 
 <div id="main">
@@ -49,23 +54,16 @@
 </header>
 
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
-<div class="section-method">
+            
 
     
 
-    <h4 class="name" id="Jamments"><span class="type-signature"></span>new Jamments<span class="signature">(apiBaseAddr)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Jamments"><span class="type-signature"></span>new Jamments<span class="signature">(options)</span><span class="type-signature"></span></h4>
 
     
-
-
-
-<div class="description">
-    Create the API object
-</div>
-
 
 
 
@@ -73,33 +71,9 @@
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line44">line 44</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -108,7 +82,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Create the API object
+</div>
+
+
 
 
 
@@ -143,13 +151,13 @@
 
         <tr>
             
-                <td class="name"><code>apiBaseAddr</code></td>
+                <td class="name"><code>options</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">Object</span>
 
 
             
@@ -159,9 +167,78 @@
 
             
 
-            <td class="description last">
-                The API's full address (ex. https://comments.my-blog.net)
+            <td class="description last">The options object
+                <h6>Properties</h6>
                 
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>endpoint</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The API's full address (ex. https://comments.my-blog.net)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cachedFilesURI</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URI path to get to static files (without slashes, ex. static)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
             </td>
         </tr>
 
@@ -184,14 +261,19 @@
 
 
 
-</div>
+
+
+
+        
+        </div>
     
-    </div>
 
     
 
     
 
+    
+    
     
 
      
@@ -205,7 +287,6 @@
 
         
             
-<div class="section-method">
 
     
 
@@ -215,44 +296,13 @@
 
 
 
-<div class="description">
-    Escape html to avoid xss
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line54">line 54</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -261,7 +311,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Escape html to avoid xss
+</div>
+
+
 
 
 
@@ -302,7 +386,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -312,10 +396,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -335,33 +416,31 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -371,44 +450,13 @@
 
 
 
-<div class="description">
-    Create HTML from Markdown (just a subset: links, *italicized*, **bold**, `code`, ```codeblock``` and paragraph)
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line71">line 71</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -417,7 +465,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Create HTML from Markdown (just a subset: links, *italicized*, **bold**, `code`, ```codeblock``` and paragraph)
+</div>
+
+
 
 
 
@@ -458,7 +540,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -468,10 +550,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -491,33 +570,31 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -527,44 +604,13 @@
 
 
 
-<div class="description">
-    Delete a comment
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line168">line 168</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line182">line 182</a>
     </li></ul></dd>
     
 
@@ -573,7 +619,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Delete a comment
+</div>
+
+
 
 
 
@@ -614,7 +694,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -624,10 +704,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -640,7 +717,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -650,10 +727,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -673,33 +747,31 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise</code></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -709,44 +781,13 @@
 
 
 
-<div class="description">
-    Get a comment from cached comments
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line134">line 134</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line148">line 148</a>
     </li></ul></dd>
     
 
@@ -755,7 +796,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Get a comment from cached comments
+</div>
+
+
 
 
 
@@ -796,7 +871,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -806,10 +881,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -829,33 +901,31 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Object</code></span>
+<span class="param-type">Object</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -865,44 +935,13 @@
 
 
 
-<div class="description">
-    Return all comments sorted chronogically. Children comments are contained inside their parents (chrono sorted too)
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line102">line 102</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -911,7 +950,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Return all comments sorted chronogically. Children comments are contained inside their parents (chrono sorted too)
+</div>
+
+
 
 
 
@@ -952,7 +1025,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -962,10 +1035,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -985,69 +1055,67 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 <ul>
         <li>
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise</code></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
 </dl>
-
 </li>
     
         <li>
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Promise.resolve.&lt;Array></code></span>
-
-
-    </dd>
-</dl>
-
-
 <div class="param-desc">
     array of comments sorted chronologically
 </div>
-</li>
-    
-        <li>
+
+
 
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.reject.&lt;Error></code></span>
+<span class="param-type">Promise.resolve.&lt;Array></span>
 
 
     </dd>
 </dl>
+</li>
+    
+        <li>
 
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.reject.&lt;Error></span>
+
+
+    </dd>
+</dl>
 </li>
     </ul>
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -1057,44 +1125,13 @@
 
 
 
-<div class="description">
-    Get global site info (nbr of comments for each article & md5 of admin user)
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line91">line 91</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line105">line 105</a>
     </li></ul></dd>
     
 
@@ -1103,12 +1140,39 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
 
 
 
 
 
+<div class="description usertext">
+    Get global site info (nbr of comments for each article & md5 of admin user)
+</div>
 
 
 
@@ -1125,33 +1189,38 @@
 
 
 
-<div class="section-returns">
+
+
+
+
+
+
+
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise</code></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -1161,44 +1230,13 @@
 
 
 
-<div class="description">
-    Post a new comment
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line147">line 147</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line161">line 161</a>
     </li></ul></dd>
     
 
@@ -1207,7 +1245,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Post a new comment
+</div>
+
+
 
 
 
@@ -1248,7 +1320,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1258,10 +1330,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1274,7 +1343,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1284,10 +1353,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1300,7 +1366,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1310,10 +1376,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1326,7 +1389,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1336,10 +1399,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1352,7 +1412,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1362,10 +1422,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1385,33 +1442,31 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise</code></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -1421,44 +1476,13 @@
 
 
 
-<div class="description">
-    Update a comment
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line158">line 158</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line172">line 172</a>
     </li></ul></dd>
     
 
@@ -1467,7 +1491,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Update a comment
+</div>
+
+
 
 
 
@@ -1508,7 +1566,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1518,10 +1576,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1534,7 +1589,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1544,10 +1599,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1560,7 +1612,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1570,10 +1622,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1593,33 +1642,31 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise</code></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -1629,44 +1676,13 @@
 
 
 
-<div class="description">
-    Update user notification preferences for an article
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line190">line 190</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line204">line 204</a>
     </li></ul></dd>
     
 
@@ -1675,7 +1691,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Update user notification preferences for an article
+</div>
+
+
 
 
 
@@ -1716,7 +1766,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1726,10 +1776,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1742,7 +1789,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1752,10 +1799,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1768,7 +1812,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1778,10 +1822,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1794,7 +1835,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>Bool</code></span>
+<span class="param-type">Bool</span>
 
 
             
@@ -1804,10 +1845,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1827,33 +1865,31 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise</code></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
             
-<div class="section-method">
 
     
 
@@ -1863,44 +1899,13 @@
 
 
 
-<div class="description">
-    Validate comment by sending validation data to API and refresh commentlist after that
-</div>
-
-
-
-
 
 <dl class="details">
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line178">line 178</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line192">line 192</a>
     </li></ul></dd>
     
 
@@ -1909,7 +1914,41 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 </dl>
+
+
+
+
+
+<div class="description usertext">
+    Validate comment by sending validation data to API and refresh commentlist after that
+</div>
+
+
 
 
 
@@ -1950,7 +1989,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1960,10 +1999,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1976,7 +2012,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>String</code></span>
+<span class="param-type">String</span>
 
 
             
@@ -1986,10 +2022,7 @@
 
             
 
-            <td class="description last">
-                
-                
-            </td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -2009,30 +2042,29 @@
 
 
 
-<div class="section-returns">
+
+
 <h5>Returns:</h5>
 
         
 
+
 <dl class="param-type">
     <dt>
-        Type:
+        Type
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise</code></span>
+<span class="param-type">Promise</span>
 
 
     </dd>
 </dl>
 
-
     
-</div>
 
 
 
-</div>
         
     
 
@@ -2046,15 +2078,25 @@
 
 
 
+    
+    
 </div>
 
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 26 2019 18:57:06 GMT-0500 (heure normale de l’Est nord-américain) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sat Mar 20 2021 19:55:16 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
 <script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
 </body>
 </html>

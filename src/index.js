@@ -48,10 +48,15 @@ function cleanSlug(slug) {
 class Jamments {
     /**
      * Create the API object
-     * @param { String } apiBaseAddr The API's full address (ex. https://comments.my-blog.net)
+     * @param { Object } options The options object
+     * @param { String } options.endpoint The API's full address (ex. https://comments.my-blog.net)
+     * @param { String } options.cachedFilesURI URI path to get to static files (without slashes, ex. static)
      */
-    constructor(apiBaseAddr) {
-        this.apiBaseAddr = apiBaseAddr;
+    constructor(config) {
+        if (!config || !config.endpoint || !config.cachedFilesURI) throw new TypeError('Both endpoint and cachedFilesURI must be defined');
+
+        this.endpoint = config.endpoint;
+        this.cachedFilesURI = config.cachedFilesURI;
         this.commentsHash = {};
     }
 
@@ -98,7 +103,7 @@ class Jamments {
      * @return { Promise }
      */
     getSiteInfos() {
-        return getJsonData(`${this.apiBaseAddr}/infos/site.json`);
+        return getJsonData(`${this.endpoint}/${this.cachedFilesURI}/site.json`);
     }
 
     /**
@@ -109,7 +114,7 @@ class Jamments {
      * @return { Promise.reject<Error> }
      */
     getComments(slug) {
-        return getJsonData(`${this.apiBaseAddr}/article/${cleanSlug(slug)}.json`)
+        return getJsonData(`${this.endpoint}/${this.cachedFilesURI}/${cleanSlug(slug)}.json`)
         .then((comments) => {
             comments.sort((a, b) => {
                 if (new Date(a.submitted_at) < new Date(b.submitted_at)) return -1;
@@ -154,7 +159,7 @@ class Jamments {
      * @return { Promise }
      */
     postComment(slug, comment, name, email, parentId) {
-        return ajax(`${this.apiBaseAddr}/comment/`, 'POST', { slug, comment, name, email, parent_id: parentId }); // eslint-disable-line
+        return ajax(`${this.endpoint}/comment/`, 'POST', { slug, comment, name, email, parent_id: parentId }); // eslint-disable-line
     }
 
     /**
@@ -165,7 +170,7 @@ class Jamments {
      * @return { Promise }
      */
     updateComment(commentId, secret, comment) {
-        return ajax(`${this.apiBaseAddr}/comment/${commentId}`, 'PATCH', { comment, user_secret: secret });
+        return ajax(`${this.endpoint}/comment/${commentId}`, 'PATCH', { comment, user_secret: secret });
     }
 
     /**
@@ -175,7 +180,7 @@ class Jamments {
      * @return { Promise }
      */
     deleteComment(commentId, secret) {
-        return ajax(`${this.apiBaseAddr}/comment/${commentId}`, 'DELETE', { user_secret: secret });
+        return ajax(`${this.endpoint}/comment/${commentId}`, 'DELETE', { user_secret: secret });
     }
 
     /**
@@ -185,7 +190,7 @@ class Jamments {
      * @return { Promise }
      */
     validateComment(commentId, secret) {
-        return ajax(`${this.apiBaseAddr}/comment/validate/${commentId}/`, 'POST', { user_secret: secret });
+        return ajax(`${this.endpoint}/comment/validate/${commentId}/`, 'POST', { user_secret: secret });
     }
 
     /**
@@ -197,7 +202,7 @@ class Jamments {
      * @return { Promise }
      */
     updateNewCommentsSubscription(articleId, userId, secret, subscribe) {
-        return ajax(`${this.apiBaseAddr}/notification/article/${articleId}/`, 'PATCH', { subscribe, user_id: userId, user_secret: secret });
+        return ajax(`${this.endpoint}/notification/article/${articleId}/`, 'PATCH', { subscribe, user_id: userId, user_secret: secret });
     }
 }
 
